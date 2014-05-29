@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+	<title>Style Guide</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>编码规范和安全</h1>
+		<p>Adam Lu(luchaowu@gmail.com)</p>
+	</header>
+	<section class="slide cover w" id="cover"><div>
+		<h2>编码规范和安全</h2>
+		<p>By <a href="http://adamlu.com/" target="_blank">Adam Lu</a> 
+		<br>Weibo: @<a href="http://weibo.com/adamlu" target="_blank">adamlu</a>
+		<br>Twitter: @<a href="http://twitter.com/adamlu" target="_blank">adamlu</a>
+		</p>
+		<img src="pictures/cover2.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#cover p a {
+					color:#FFF;
+				}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<figure>
+			<blockquote>
+				<p>Writing Code for Humans, not Computers.</p>
+			</blockquote>
+			<figcaption><a href="http://programmer.97things.oreilly.com/wiki/index.php/Write_Code_for_Humans_not_Machines">Mario Fusco</a></figcaption>
+		</figure>
+		<p>让你的代码容易被其他程序员读懂可以减轻他们的工作，当你想到下一个将要读这段代码的人是你的时候你不会觉得这是件坏事。</p>
+	</div></section>
+	<section class="slide shout grow"><div>
+		<h2>如果没有了规范</h2>
+	</div></section>
+	<section class="slide shout cover cover-w w"><div>
+		<img src="pictures/notknow.jpg" alt="">
+	</div></section>
+	<style>
+		.cover-w h2{
+			color: #fff;
+		}
+	</style>
+	<section class="slide"><div>
+		<h2>编码规范的作用</h2>
+		<ul>
+			<li>提高代码可读性</li>
+			<li>保持团队风格统一</li>
+			<li>有助于知识传递</li>
+			<li>提供代码可维护性</li>
+			<li>提高个人能力</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>如何定义规范</h2>
+		<ul>
+			<li>不是一个新的指南</li>
+			<li class="next">以文档形式存在</li>
+			<li class="next">结合团队自身</li>
+			<li class="next">风格统一的</li>
+			<li class="next">组件工具开发也需要形成规范，如dust，less，saas</li>
+		</ul>
+	</div></section>
+	<section class="slide cover h"><div>
+		<h2><a href="https://github.com/styleguide">Github</a></h2>
+		<img src="pictures/github-css-styleguide.jpg" alt="">
+	</div></section>
+	<section class="slide cover h"><div>
+		<h2><a href="http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml">Google</a></h2>
+		<img src="pictures/google-style-guide.jpg" alt="">
+	</div></section>
+	<section class="slide shout grow"><div>
+		<h2>PHP编码规范和安全</h2>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>PHP代码风格指南</h2>
+		<ul>
+			<li>文件格式</li>
+			<li>排版</li>
+			<li>命名</li>
+			<li>注释</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>文件格式</h2>
+		<ul>
+			<li>文件编码使用UTF-8无BOM格式</li>
+			<li>对于仅包含PHP代码的文件，禁止添加PHP闭合标签("?>")</li>
+			<li>一行代码不超过80列</li>
+			<li>换行使用UNIX风格（LF，\n）</li>
+			<li>去除行末或空行中的空格，建议借助工具或对编辑器进行设置去除</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>程序块要采用缩进风格编写，缩进的空格数为4个。工程师务必设置自己的编辑器，将缩进定为一个soft tab即4个空格</li>
+			<li>开始的大括号位于一行的末尾，结束的括号位于最末一行后，且独占一行</li>
+			<li>关键字与其后的左括号之间有一个空格</li>
+			<li>if/while等结构，即使只有一行，也必须加上左右花括号，不允许写成一行</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<pre>
+<code>
+if<mark> </mark>($a > $b)<mark> </mark><mark class="important">{</mark>
+    // ...
+<mark class="important">}</mark>
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>关键字true、false、null必须小写</li>
+		</ul>
+		<pre>
+<code>
+$a = true;
+$b = false;
+$c = null;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>elseif语句使用elseif形式，不使用else if形式</li>
+		</ul>
+		<pre>
+<code>
+if ($a > $b) {
+} <mark>elseif</mark> ($b !== 0) {
+} else {
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>函数名与其后的左括号之间不应有任何字符（包括空格）</li>
+			<li>函数调用的左括号与其第一个参数之间不应有任何字符（包括空格）</li>
+			<li>最后一个参数与右括号之间不应有任何字符（包括空格）</li>
+			<li>（建议）参数列表中，每个参数的逗号后面应有一个空格</li>
+		</ul>
+		<pre>
+<code>
+function make_something<mark>(</mark>$a, $b, $c<mark>)</mark> {
+    // ...
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>if语句的条件若较多较长，应折行；新行以逻辑运算符起始，与第一行if左括号后的第一个字符对齐；折行后，每行条件具有独立而明确的语义</li>
+		</ul>
+		<pre>
+<code>
+if (($a > $b)
+    && ($b > $c)
+    && ($d > $e)) {
+    // ...
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>switch语句中每个case块内的语句必须与case保持一级缩进</li>
+		</ul>
+		<pre>
+<code>
+switch ($type) {
+    case ‘A’:
+        // ...
+        break;
+    case ‘B’:
+        // ...
+        break;
+    default:
+        // ...
+        break;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>排版</h2>
+		<ul>
+			<li>初始化array如果采用多行结构时，每个数据元素部分需要缩进，且最后一个数据项后面的逗号不可省略</li>
+		</ul>
+		<pre>
+<code>
+$arr_a = array(
+    ‘key_a’ => 1,
+    ‘key_b’ => ‘Hello world~’,
+    ‘key_c’ => false<mark>,</mark>
+);
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>全局变量的声明和调用必须使用$GLOBALS</li>
+			<li>全局变量名前务必添加前缀g_</li>
+		</ul>
+		<pre>
+<code>
+<mark>$GLOBALS</mark>[‘g_refcount’] = 0;
+// ...
+function func_a() {
+    $GLOBALS[‘<mark>g_refcount</mark>’]++;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>Magic number不允许直接出现在代码中，必须定义为常量</li>
+			<li>常量（包括define定义或const定义）命名使用全部大写字符，单词之间以'_'连接</li>
+		</ul>
+		<pre>
+<code>
+define(‘<mark>DB_HOST</mark>’, ‘127.0.0.1’);
+class AClass {
+    const <mark>ERRNO_NO_ERR</mark> = 0;
+    const <mark>ERRNO_CONN</mark> = 1;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>局部变量命名采用小写字母和下划线（“_”），类及对象属性采用驼峰式命名</li>
+		</ul>
+		<pre>
+<code>
+function <mark>filter_string</mark>($str) {
+    <mark>$sanitized_str</mark> = preg_replace(‘/[^a-z0-9]/i’, ‘’, $str);
+    return $sanitized_str;
+}
+class <mark>AClass</mark> {
+    public function <mark>getField</mark>() {
+        return $this->_field;
+    }
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>类命名需首字母大写，每个单词的首字母大写；除下划线外不使用任何字母数字外的字符；下划线在类命名中仅用于标识package，不得用于非package内类命名</li>
+		</ul>
+		<pre>
+<code>
+//File: SomePackage/AClass.class.php
+class <mark>SomePackage_AClass</mark> {
+    private $_field = 0;
+    private function _getSomeField() {
+        return $this->_field;
+    }
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>构造函数使用__construct()，禁止使用与类名同名函数</li>
+			<li>类method命名采用驼峰命名，普通function采用下划线风格命名</li>
+		</ul>
+		<pre>
+<code>
+class AClass {
+    public function <mark>__construct</mark>() {
+        $this->_genId();
+    }
+    public function <mark>getId</mark>() {
+        return $this->_id;
+    }
+    function <mark>gen_id</mark>() {
+        // ...
+    }
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>私有成员命名需添加下划线'_'前缀</li>
+		</ul>
+		<pre>
+<code>
+class AClass {
+    private <mark>$_field</mark> = 0;
+    private function <mark>_getSomeField</mark>() {
+        return $this->_field
+    }
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名</h2>
+		<ul>
+			<li>文件（非类文件）命名使用小写字母，单词之间以下划线'_'连接</li>
+			<li>配置文件的名称为“配置文件名.conf.php”，单词小写通过下划线'_' 连接</li>
+			<li>一个类文件只允许包含一个类的定义，文件命名需为“类名.class.php”</li>
+		</ul>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>注释</h2>
+		<ul>
+			<li>类、函数、方法，均应添加<a href="http://www.phpdoc.org/docs/latest/for-users/phpdoc-reference.html" target="_blank">phpdoc</a>注释</li>
+		</ul>
+		<pre>
+<code>
+class Foo {
+	/**
+	* This method sets a description.
+	* @param string $description A text with ...
+	* @return void
+	*/
+	public function setDescription($description) {
+		$this->description = $description;
+	}
+ }
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>PHP安全规范</h2>
+		<ul>
+			<li>所有的输入都是有害的，如下列环境变量：$_SERVER, $_GET, $_POST, $_COOKIE,
+$_FILES, $_ENV, $REQUEST</li>
+			<li>数据库操作，如使用框架进行处理，必须使用框架中提供的 sqlTemplate 或者
+paramBind、mysqli::preparesatement 等方式进行 sql 语句的参数值注入（绑定），不
+要直接使用参数拼接原始 SQL 语句</li>
+			<li>不使用数据库操作类直接操作原始 SQL 语句的，必须使用 Intval 对整数型参数过滤，
+使用 mysql_real_escape_string 对字符串型进行过滤。并要配合 mysql_set_charset
+设置当前字符集进行使用</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>PHP安全规范</h2>
+		<ul>
+			<li>用户输入的文件名、文件路径、文件后缀名必须进行过滤，防止文件系统特殊符号
+混入（如“..”、NULL 字符等），后缀名需要白名单限定</li>
+			<li>输入参数作为 system，exec，passthru，反引号等任何命令执行函数的参数时，要
+使用 escapeshellarg 函数进行过滤</li>
+			<li>输入参数作为 php 代码执行时，要使用 var_export 进行数据导出</li>
+			<li>字符串尽量用' '而不是" "进行引用，一个是效率问题，一个是安全问题</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2><img src="pictures/php.png"><a href="https://onedrive.live.com/view.aspx?cid=B55D97D2EE0BC226&resid=B55D97D2EE0BC226%21408&app=Word" target="_blank">详细内容</a></h2>
+	</div></section>	
+	<section class="slide shout grow"><div>
+		<h2>HTML/模板编码规范</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>使用HTML5的Doctype</h2>
+		<pre>
+<code>
+&lt;!<mark class="important">DOCTYPE</mark> html&gt;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>语法</h2>
+		<ul>
+			<li>用四个空格代替 TAB 键</li>
+			<li>属性的定义确保全部用双引号</li>
+			<li>不要在不要闭合标签后添加斜杠 如： br img hr input link meta 等</li>
+			<li>其他需要闭合的标签一定要添加结束标签  如： div li 等</li>
+			<li>所有标签、属性、属性值必须采用小写，如特殊属性可略过</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>属性规则</h2>
+		<ul>
+			<li>强烈建议为html根元素指定lang属性，从而为文档设置正确的语言。这将有助于语音合成工具确定其所应该采用的发音，有助于翻译工具确定其翻译时所应遵守的规则&lt;html <mark>lang="zh-cn"</mark>&gt;</li>
+			<li>对属性值使用双引号引用，不要使用单引号</li>
+			<li>meta标签添加X-UA-Compatible属性 &lt;meta http-equiv="<mark>X-UA-Compatible</mark>" content="IE=edge,chrome=1"&gt;</li>
+			<li>标签中属性和属性值不需要添加空格&lt;img src<mark>=</mark>"/test.jpg"&gt;</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>文件规范</h2>
+		<ul>
+			<li>统一使用UTF-8 编码&lt;meta <mark>charset="UTF-8"</mark>&gt;</li>
+			<li>所有文件使用UTF-8无BOM编码</li>
+			<li>行尾去掉多余空格</li>
+			<li>每次缩进四个空格</li>
+			<li>如模块下有多个模板，前缀需以模块名开始，后面为模板功能名称timeline-bar (timeline 为模块名)</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>资源引用</h2>
+		<ul>
+			<li>不要指定type属性 &lt;link rel="stylesheet" href="code-guide.css"&gt; &lt;script src="code-guide.js"&gt;&lt;/script&gt;</li>
+			<li>引入外部CSS必须为link格式</li>
+			<li>CSS文件放至结束head标签前，JavaScript文件放至结束body标签前</li>
+			<li>在指向同域的图片、样式表、脚本等的URL中省略协议部分(http:, https:)</li>
+			<li>避免直接内嵌第三方脚本、样式表、图片等，必要时可以复制到本地服务器上使用</li>
+		</ul>
+	</div></section>			
+	<section class="slide"><div>
+		<h2>注释</h2>
+		<ul>
+			<li>TODO注释 &lt;!-- TODO(chenfei02): Remove optional tags. --&gt;</li>
+			<li>FIXME注释 &lt;!-- FIXME(chenfei02): Remove optional tags. --&gt;</li>
+			<li>能的话，在多层嵌套的闭合标签处添加注释，声明对应的ID或Class</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>语义化</h2>
+		<ul>
+			<li>根据需要使用合适的标签</li>
+			<li>避免在HTML中直接定义style属性，包括运行时的动态添加</li>
+			<li>避免在HTML中直接定义JavaScript的onXXX属性</li>
+			<li>HTML只用来表现信息结构，不要使用样式类标签，比如b, font, center等等</li>
+			<li>对图片、视频、Canvas等, 需要定义合适的alt文本</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>HTML 校验</h2>
+		<ul>
+			<li>使用合法的HTML标签，校验地址：<a href="http://validator.w3.org/">http://validator.w3.org/</a></li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>示例截图</h2>
+		<img src="pictures/snap_html_guide.png" width="60%" alt="">
+	</div></section>
+	<section class="slide shout"><div>
+		<h2><img src="pictures/html.png"><a target="_blank" href="https://onedrive.live.com/view.aspx?cid=B55D97D2EE0BC226&resid=B55D97D2EE0BC226%21410&app=Word">详细内容</a></h2>
+	</div></section>	
+	<section class="slide shout grow"><div>
+		<h2>JavaScript编码规范和安全</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JavaScript编码规范</h2>
+		<ul>
+			<li>语言规范</li>
+			<li>格式规范</li>
+			<li>代码格式化</li>
+			<li>编译</li>
+			<li>安全</li>
+			<li>共享库</li>
+			<li>小技巧</li>
+		</ul>
+	</div></section>
+	<!--<section class="slide shout"><div>
+		<h2>JavaScript最佳实践</h2>
+	</div></section>-->
+	<section class="slide"><div>
+		<h2>总是使用var来声明变量</h2>
+		<pre>
+<code>
+// bad
+superPower = new SuperPower();
+
+// good
+<mark class="important">var</mark> superPower = new SuperPower();
+</code>
+		</pre>
+	<p>如果不这么做将导致产生全局变量，我们要避免污染全局命名空间</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>使用字面值创建对象</h2>
+		<pre>
+<code>
+// bad
+var item = new Object();
+
+// good
+var item = <mark>{}</mark>;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>使用一个var以及新行声明多个变量，缩进4个空格</h2>
+		<pre>
+<code>
+// bad
+var items = getItems();
+var goSportsTeam = true;
+var dragonball = 'z';
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>使用一个var以及新行声明多个变量，缩进4个空格</h2>
+		<pre>
+<code>
+// good
+var items = getItems(),
+    goSportsTeam = true,
+    dragonball = 'z';
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>最后再声明未赋值的变量，当你想引用之前已赋值变量的时候很有用</h2>
+		<pre>
+<code>
+// bad
+var i, len, dragonball,
+    items = getItems(),
+    goSportsTeam = true;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>最后再声明未赋值的变量，当你想引用之前已赋值变量的时候很有用</h2>
+		<pre>
+<code>
+// good
+var items = getItems(),
+    goSportsTeam = true,
+    dragonball,
+    length,
+    i;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>在作用域顶部声明变量，避免变量声明和赋值引起的相关问题</h2>
+		<pre>
+<code>
+// bad
+function() {
+	test();
+	console.log('doing stuff..');
+	//..other stuff..
+	var name = getName();
+	if (name === 'test') {
+		return false;
+	}
+	return name;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>在作用域顶部声明变量，避免变量声明和赋值引起的相关问题</h2>
+		<pre>
+<code>
+// good
+function() {
+	<mark>var name = getName();</mark>
+	test();
+	console.log('doing stuff..');
+	//..other stuff..
+	if (name === 'test') {
+		return false;
+	}
+	return name;
+}
+</code>
+		</pre>
+	</div></section>
+<style>
+	.pre-s pre code {
+		line-height: 1.2;
+	}
+</style>
+	<section class="slide"><div>
+		<h2>给所有块使用大括号</h2>
+		<pre>
+<code>
+// bad
+if (test)
+    return false;
+
+// good
+if (test) {
+    return false;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>给所有块使用大括号</h2>
+		<pre>
+<code>
+// bad
+function() { return false; }
+
+// good
+function() {
+    return false;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>将tab设为4个空格</h2>
+		<pre>
+<code>
+// bad
+function() {
+∙∙var name;
+}
+
+// bad
+function() {
+∙var name;
+}
+
+// good
+function() {
+∙∙∙∙var name;
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>大括号前放一个空格</h2>
+		<pre>
+<code>
+// bad
+function test(){
+    console.log('test');
+}
+
+// good
+function test()<mark> </mark>{
+    console.log('test');
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>大括号前放一个空格</h2>
+		<pre>
+<code>
+// bad
+dog.set('attr',{
+	age: '1 year',
+	breed: 'Bernese Mountain Dog'
+});
+
+// good
+dog.set('attr',<mark> </mark>{
+	age: '1 year',
+	breed: 'Bernese Mountain Dog'
+});
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>在做长方法链时使用缩进</h2>
+		<pre>
+<code>
+// bad
+$('#items').find('.selected').highlight().end().find('.open').updateCount();
+
+// good
+$('#items')
+    .find('.selected')
+    .highlight()
+    .end()
+    .find('.open')
+    .updateCount();
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>不要将逗号放前面</h2>
+		<pre>
+<code>
+// bad
+var once
+    , upon
+    , aTime;
+
+// good
+var once,
+    upon,
+    aTime;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>不要将逗号放前面</h2>
+		<pre>
+<code>
+// bad
+var hero = {
+	firstName: 'Bob'
+	, lastName: 'Parr'
+	, superPower: 'strength'
+};
+
+// good
+var hero = {
+	firstName: 'Bob',
+	lastName: 'Parr',
+	superPower: 'strength'
+};
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>不要加多余的逗号</h2>
+		<pre>
+<code>
+// bad
+var hero = {
+	firstName: 'Kevin',
+	lastName: 'Flynn'<mark>,</mark>
+};
+
+var heroes = [
+	'Batman',
+	'Superman'<mark>,</mark>
+];
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>不要加多余的逗号</h2>
+		<pre>
+<code>
+// good
+var hero = {
+	firstName: 'Kevin',
+	lastName: 'Flynn'
+};
+
+var heroes = [
+	'Batman',
+	'Superman'
+];
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>语句结束一定要加分号</h2>
+		<pre>
+<code>
+// bad
+(function() {
+    var name = 'Skywalker'
+    return name
+})()
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>语句结束一定要加分号</h2>
+		<pre>
+<code>
+// good
+(function() {
+    var name = 'Skywalker';
+    return name;
+})()<mark>;</mark>
+
+// good
+<mark>;</mark>(function() {
+    var name = 'Skywalker';
+    return name;
+})()<mark class="important">;</mark>
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>避免单个字符名，让你的变量名有描述意义</h2>
+		<pre>
+<code>
+// bad
+function q() {
+    // ...stuff...
+}
+
+// good
+function query() {
+    // ..stuff..
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>对象、函数和实例使用驼峰命名规则</h2>
+		<pre>
+<code>
+// good
+var <mark>thisIsMyObject</mark> = {};
+
+function <mark>thisIsMyFunction</mark>() {
+	
+}
+
+var <mark>user</mark> = new User({
+    name: 'Bob Parr'
+});
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>命名构造函数或类时使用驼峰式大写</h2>
+		<pre>
+<code>
+// good
+function <mark>User</mark>(options) {
+    this.name = options.name;
+}
+
+var good = new <mark>User</mark>({
+    name: 'yup'
+});
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>命名私有属性时前面加个下划线_</h2>
+		<pre>
+<code>
+// good
+this.<mark>_firstName</mark> = 'Panda';
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>当保存对 this 的引用时使用_this</h2>
+		<pre>
+<code>
+// good
+function() {
+	var <mark>_this</mark> = this;
+	return function() {
+		console.log(<mark>_this</mark>);
+	};
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>缓存jQuery查询</h2>
+		<pre>
+<code>
+// bad
+function setSidebar() {
+	<mark>$('.sidebar')</mark>.hide();
+
+	// ...stuff...
+
+	<mark>$('.sidebar')</mark>.css({
+		'background-color': 'pink'
+	});
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>缓存jQuery查询</h2>
+		<pre>
+<code>
+// good
+function setSidebar() {
+	var <mark>$sidebar</mark> = $('.sidebar');
+	<mark>$sidebar</mark>.hide();
+
+	// ...stuff...
+
+	<mark>$sidebar</mark>.css({
+		'background-color': 'pink'
+	});
+}
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JavaScript安全规范</h2>
+		<ul>
+			<li>在产品功能的接口设计上，尽量避免多余信息的暴露</li>
+			<li>在用户可控数据的功能设计上，尽量遵守最小化原则</li>
+			<li>尽量减少使用用户可控数据</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JavaScript安全规范</h2>
+		<ul>
+			<li>模板中出现的所有UI变量都必须进行转义</li>
+			<li>上线前需要使用Uglify、YUI或者其他压缩工具混合压缩JavaScript代码</li>
+			<li>前后端保持一致的过滤和检查策略，主要是表单验证和富编辑标签过滤的时候</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h3>场景：通过js对字符串进行html编/解码</h3>
+		<pre>
+<code>
+&lt;script&gt;
+function htmlDecode(strEncodeHtml) {
+	var div = document.createElement('div');
+	div.<mark>innerHTML</mark> = strEncodeHtml;
+	return div.innerText;
+}
+htmlDecode($varvalue$);
+&lt;/script&gt;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<p>此种写法隐含着DOM innerHTML节点的建立，若htmlDecode('&lt;img src=1
+<mark>onerror</mark>=alert(1)&gt;')，虽然最终的结果正确，但实际已执行了onerror代码</p>
+		<p>此场景下应该用<mark>replace</mark>等替换方法进行编/解码特殊字符</p>
+	</div></section>	
+	<section class="slide"><div>
+		<h3>场景：避免document.write+location.href的写法</h3>
+		<h4>错误编码：</h4>
+		<pre>
+<code>
+&lt;script&gt;
+	document.write("&lt;input type='hidden' name='u'
+	 <mark>value='"+location.href+"'</mark>/&gt;");
+&lt;/script&gt;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h3>正确方式：</h3>
+		<pre>
+<code>
+&lt;body&gt;
+	&lt;input type=“hidden” id=“u” value=“”/&gt;
+&lt;/body&gt;
+&lt;script&gt;
+	document.getElementById("u").<mark>value</mark>
+	 = location.href;
+&lt;/script&gt;
+</code>
+		</pre>
+	</div></section>	
+	<section class="slide shout"><div>
+		<h2><img src="pictures/javascript.png"><a href="https://onedrive.live.com/view.aspx?cid=B55D97D2EE0BC226&resid=B55D97D2EE0BC226%21409&app=Word" target="_blank">详细内容</a></h2>
+	</div></section>		
+	<section class="slide shout grow"><div>
+		<h2>CSS编码规范</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>CSS编码规范</h2>
+		<ul>
+			<li>命名</li>
+			<li>缩进</li>
+			<li>大小写</li>
+			<li>空格与空行</li>
+			<li>行的使用</li>
+			<li>引号</li>
+			<li>声明顺序</li>
+			<li>注释</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>CSS编码规范</h2>
+		<ul>
+			<li>选择器</li>
+			<li>内容分离</li>
+			<li>其它</li>
+			<li>文件编码</li>
+			<li>文件内容</li>
+			<li>文件命名</li>
+			<li>文件结构</li>
+			<li>文件声明</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>命名规范</h2>
+		<ul>
+			<li>以连字符（-）连接 class 的名字（例如 .foo<mark>-</mark>bar 而非 .foo_bar 或 .fooBar）</li>
+			<li>使用有意义的名称。使用有组织的或目的明确的名称，不要使用表现形式（presentational）的名称</li>
+			<li>使用应用、组件、模块的名称作为前缀</li>
+			<li>尽量使用公开定义的缩写或简称，可读、易于理解</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>简写</h2>
+		<pre>
+<code>
+/* bad */
+background: red;
+
+/* good */
+<mark>background-color</mark>: red;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>简写</h2>
+		<pre>
+<code>
+/* bad */
+margin: 0;
+
+/* good，写具体 */
+<mark>margin-bottom</mark>: 0;
+</code>
+		</pre>
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>选择器</h2>
+		<ul>
+			<li>在CSS里尽量不要用ID</li>
+			<li>务必保持选择器简短高效</li>
+			<li>避免主动使用!important</li>
+		</ul>
+		<pre>
+<code>
+/* bad */
+div.promo {}
+
+/* good */
+.promo {}
+</code>
+		</pre>		
+	</div></section>
+	<section class="slide pre-s"><div>
+		<h2>魔数与绝对定位</h2>
+		<pre>
+<code>
+/* bad */
+.dropdown-nav li:hover ul { 
+	top: 37px; 
+}
+
+/* good */
+.dropdown-nav li:hover ul { 
+	top: 100%; 
+}
+</code>
+		</pre>		
+	</div></section>
+	<section class="slide shout"><div>
+		<h2><img src="pictures/css.png"><a target="_blank" href="https://onedrive.live.com/view.aspx?cid=B55D97D2EE0BC226&resid=B55D97D2EE0BC226%21407&app=Word">详细内容</a></h2>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>规范工具化</h2>
+		<ul>
+			<li>JsLint/JsHint</li>
+			<li>CSSLint</li>
+			<li>HTML Validator</li>
+			<li>规范检查</li>
+			<li>CodeReview检查</li>
+			<li>规范平台</li>
+			<li>组件平台</li>
+		</ul>
+	</div></section>
+	<section class="slide shout grow"><div>
+		<h2>大家遵循规范之后</h2>
+	</div></section>
+	<section class="slide cover cover-w"><div>
+		<h2>将会解决团队协作的一大难题</h2>
+		<img src="pictures/collaboration.jpg" alt="">
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Thanks!</h2>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
